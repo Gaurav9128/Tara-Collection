@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a.active hr{
+    display: block;
+}
+
+*{
+    font-family: Outfit;
+}
+
+.prata-regular {
+    font-family: "Prata", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  ::-webkit-scrollbar{
+    display: none;
+  }
+  
+  @media (max-width:640px) {
+    a.active{
+        background-color: black;
+        color: white;
+    }
+  }
+
+  /* Global Reset for Body */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Horizontal scrolling prevent karne ke liye */
+  background-color:bisque;
+}
+
+/* Parent container and slider adjustments */
+.hero-slider {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+}
+
+.hero-slider img {
+  width: 80%;
+  height: 80%;
+  object-fit: cover; /* White space avoid karega */
+}
+
+.profile-button {
+  position: relative; /* Ensure it is positioned */
+  z-index: 10; /* Set a higher z-index */
+}
+.carousel {
+  z-index: 1; /* Lower the carousel's z-index */
+}
+
