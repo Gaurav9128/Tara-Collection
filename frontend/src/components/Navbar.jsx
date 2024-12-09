@@ -56,7 +56,7 @@ const Navbar = () => {
               />
               <div className="absolute right-0 hidden group-hover:block bg-white shadow-md rounded w-40">
                 <div className="flex flex-col gap-2 p-3">
-                  <Link to="/profile" className="hover:text-gray-900">
+                  <Link to="" className="hover:text-gray-900">
                     My Profile
                   </Link>
                   <Link to="/orders" className="hover:text-gray-900">
