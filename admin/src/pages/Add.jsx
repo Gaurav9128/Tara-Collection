@@ -17,7 +17,7 @@ const Add = ({token}) => {
    const [category, setCategory] = useState("Men");
    const [subCategory, setSubCategory] = useState("Topwear");
    const [bestseller, setBestseller] = useState(false);
-   const [sizes, setSizes] = useState([]);
+  //  const [sizes, setSizes] = useState([]);
 
    const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const Add = ({token}) => {
       formData.append("category",category)
       formData.append("subCategory",subCategory)
       formData.append("bestseller",bestseller)
-      formData.append("sizes",JSON.stringify(sizes))
+      // formData.append("sizes",JSON.stringify(sizes))
 
       image1 && formData.append("image1",image1)
       image2 && formData.append("image2",image2)
@@ -102,7 +102,7 @@ const Add = ({token}) => {
               <select onChange={(e) => setCategory(e.target.value)} className='w-full px-3 py-2'>
                   <option value="Men">Men</option>
                   <option value="Women">Women</option>
-                  <option value="Kids">Kids</option>
+                  {/* <option value="Kids">Kids</option> */}
               </select>
             </div>
 
@@ -123,7 +123,7 @@ const Add = ({token}) => {
 
         </div>
 
-        <div>
+        {/* <div>
           <p className='mb-2'>Product Sizes</p>
           <div className='flex gap-3'>
             <div onClick={()=>setSizes(prev => prev.includes("S") ? prev.filter( item => item !== "S") : [...prev,"S"])}>
@@ -146,7 +146,7 @@ const Add = ({token}) => {
               <p className={`${sizes.includes("XXL") ? "bg-pink-100" : "bg-slate-200" } px-3 py-1 cursor-pointer`}>XXL</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className='flex gap-2 mt-2'>
           <input onChange={() => setBestseller(prev => !prev)} checked={bestseller} type="checkbox" id='bestseller' />
