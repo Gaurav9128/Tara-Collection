@@ -58,3 +58,16 @@ body {
   z-index: 1; /* Lower the carousel's z-index */
 }
 
+/* Default styles (light mode) */
+/* Default styles (light mode) */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark mode styles */
+html.dark body {
+  background-color: #1a202c; /* Dark background */
+  color: white; /* Light text */
+}
+

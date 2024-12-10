@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FaSun, FaMoon } from 'react-icons/fa'; // Import dark mode icons
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 
-const Navbar = () => {
+const Navbar = ({ toggleDarkMode, darkMode }) => {
   const [visible, setVisible] = useState(false);
   const { setShowSearch, getCartCount, token, handleLogout } = useContext(ShopContext);
   const navigate = useNavigate();
@@ -88,6 +89,18 @@ const Navbar = () => {
           )}
         </Link>
 
+        {/* Dark Mode Toggle Button */}
+        <button
+          onClick={toggleDarkMode}
+          className="flex items-center justify-center px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          {darkMode ? (
+            <FaSun className="text-xl" />
+          ) : (
+            <FaMoon className="text-xl" />
+          )}
+        </button>
+
         {/* Mobile Menu Icon */}
         <img
           onClick={() => setVisible(true)}
@@ -99,9 +112,7 @@ const Navbar = () => {
 
       {/* Mobile Sidebar Menu */}
       <div
-        className={`absolute top-0 right-0 bottom-0 bg-white transition-all ${
-          visible ? 'w-3/4' : 'w-0'
-        } overflow-hidden`}
+        className={`absolute top-0 right-0 bottom-0 bg-white transition-all ${visible ? 'w-3/4' : 'w-0'} overflow-hidden`}
       >
         <div className="flex flex-col">
           <button onClick={() => setVisible(false)} className="p-3 text-left">
