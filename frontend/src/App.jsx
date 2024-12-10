@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { FaSun, FaMoon } from 'react-icons/fa'; // Import icons
+
 import Home from './pages/Home';
 import Collection from './pages/Collection';
 import About from './pages/About';
