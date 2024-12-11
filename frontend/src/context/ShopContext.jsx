@@ -14,17 +14,20 @@ const ShopContextProvider = (props) => {
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
     const [products, setProducts] = useState([]);
-    const [token, setToken] = useState('')
+    const [token, setToken] = useState('');
     const navigate = useNavigate();
 
+    // Add Logout Functionality
+    const handleLogout = () => {
+        // Clear token from localStorage and context
+        localStorage.removeItem('token');
+        setToken('');
+        setCartItems({}); // Optionally clear cart on logout
+        toast.success('Logged out successfully');
+        navigate('/login'); // Redirect to login page
+    };
 
     const addToCart = async (itemId, size) => {
-
-        // if (!size) {
-        //     toast.error('Select Product Size');
-        //     return;
-        // }
-
         let cartData = structuredClone(cartItems);
 
         if (cartData[itemId]) {
@@ -43,16 +46,13 @@ const ShopContextProvider = (props) => {
 
         if (token) {
             try {
-
                 await axios.post(backendUrl + '/api/cart/add', { itemId, size }, { headers: { token } })
-
             } catch (error) {
                 console.log(error)
                 toast.error(error.message)
             }
         }
-
-    }
+    };
 
     const getCartCount = () => {
         let totalCount = 0;
@@ -62,16 +62,13 @@ const ShopContextProvider = (props) => {
                     if (cartItems[items][item] > 0) {
                         totalCount += cartItems[items][item];
                     }
-                } catch (error) {
-
-                }
+                } catch (error) {}
             }
         }
         return totalCount;
-    }
+    };
 
     const updateQuantity = async (itemId, size, quantity) => {
-
         let cartData = structuredClone(cartItems);
 
         cartData[itemId][size] = quantity;
@@ -80,16 +77,13 @@ const ShopContextProvider = (props) => {
 
         if (token) {
             try {
-
                 await axios.post(backendUrl + '/api/cart/update', { itemId, size, quantity }, { headers: { token } })
-
             } catch (error) {
                 console.log(error)
                 toast.error(error.message)
             }
         }
-
-    }
+    };
 
     const getCartAmount = () => {
         let totalAmount = 0;
@@ -100,33 +94,28 @@ const ShopContextProvider = (props) => {
                     if (cartItems[items][item] > 0) {
                         totalAmount += itemInfo.price * cartItems[items][item];
                     }
-                } catch (error) {
-
-                }
+                } catch (error) {}
             }
         }
         return totalAmount;
-    }
+    };
 
     const getProductsData = async () => {
         try {
-
             const response = await axios.get(backendUrl + '/api/product/list')
             if (response.data.success) {
                 setProducts(response.data.products.reverse())
             } else {
                 toast.error(response.data.message)
             }
-
         } catch (error) {
             console.log(error)
             toast.error(error.message)
         }
-    }
+    };
 
     const getUserCart = async ( token ) => {
         try {
-            
             const response = await axios.post(backendUrl + '/api/cart/get',{},{headers:{token}})
             if (response.data.success) {
                 setCartItems(response.data.cartData)
@@ -135,7 +124,7 @@ const ShopContextProvider = (props) => {
             console.log(error)
             toast.error(error.message)
         }
-    }
+    };
 
     useEffect(() => {
         getProductsData()
@@ -157,15 +146,14 @@ const ShopContextProvider = (props) => {
         cartItems, addToCart,setCartItems,
         getCartCount, updateQuantity,
         getCartAmount, navigate, backendUrl,
-        setToken, token
-    }
+        setToken, token, handleLogout // Add handleLogout here
+    };
 
     return (
         <ShopContext.Provider value={value}>
             {props.children}
         </ShopContext.Provider>
-    )
-
-}
+    );
+};
 
 export default ShopContextProvider;
