@@ -48,7 +48,7 @@ const App = () => {
   }, [darkMode]);
 
   return (
-    <div className={`px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
+    <div className={`px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw] ${darkMode ? 'bg-black text-white' : 'bg-gray-100 text-black'}`}>
       <ToastContainer />
      
       <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
