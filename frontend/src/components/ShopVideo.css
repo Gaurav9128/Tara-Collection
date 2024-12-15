@@ -1,0 +1,60 @@
+/* Container Styles */
+.shop-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.shop-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Grid Container */
+.categories-grid {
+    display: flex; /* Makes the items align in a single row */
+    gap: 20px; /* Adds spacing between video cards */
+    overflow-x: auto; /* Enables horizontal scrolling */
+    padding: 10px 0;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    white-space: nowrap; /* Prevents wrapping to next line */
+}
+
+/* Hide Scrollbar (optional) */
+.categories-grid::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
+}
+
+/* Individual Video Card */
+.category-card {
+    flex: 0 0 auto; /* Prevents shrinking and ensures equal width */
+    width: 270px; /* Set a fixed width for cards */
+    text-align: center;
+}
+
+.category-video-container {
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.category-video {
+    width: 130%;
+    height: 500px; /* Adjust the video height */
+    object-fit: cover; /* Ensures video fits well */
+}
+
+.category-details {
+    margin-top: 10px;
+}
+
+.category-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.category-price {
+    color: #000000;
+    font-size: 1rem;
+}
