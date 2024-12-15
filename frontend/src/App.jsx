@@ -16,6 +16,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verify from './pages/Verify';
 import './index.css';  // Make sure this is imported
+import PrivacyPolicy from './pages/privacy-policy';
+import TermsAndConditions from './pages/Term-condition';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -65,6 +67,8 @@ const App = () => {
         <Route path="/place-order" element={<PlaceOrder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path='/Term-condition' element={<TermsAndConditions />} />
       </Routes>
 
       <Footer />
