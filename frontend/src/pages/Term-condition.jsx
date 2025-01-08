@@ -24,7 +24,7 @@ const TermsAndConditions = () => {
             </ul><br/>
             <p>Delivery times may vary based on your location and external factors such as weather or courier delays.</p> <br/>
 
-            <h3>3. Shipping Charges</h3>
+            {/* <h3>3. Shipping Charges</h3>
             <ul>
                 <li>Shipping charges are calculated at checkout based on the delivery address and chosen shipping method.</li>
                 <li>Free shipping is available on orders above [Insert Free Shipping Threshold Amount].</li>
@@ -49,7 +49,7 @@ const TermsAndConditions = () => {
             <ul>
                 <li>If your shipment is lost or damaged in transit, please contact us immediately at [taracollection766@gmail.com || +91-8824454873].</li>
                 <li>We will work with the courier service to resolve the issue and provide a replacement or refund if applicable.</li>
-            </ul><br/>
+            </ul><br/> */}
 
             <h3>8. Contact Us</h3>
             <ul>
@@ -78,9 +78,9 @@ const TermsAndConditions = () => {
             <h3>3. Return Policy</h3>
             <ul>
                 <li>Items can be returned within 3 days of delivery if they are unused, unworn, and in their original packaging with tags intact.</li>
-                <li>To initiate a return, contact us at [taracollection766@gmail.com || +91-8824454873] with your order details and reason for return.</li>
-                <li>The customer is responsible for return shipping costs unless the return is due to a defect or error on our part.</li>
-                <li>Once the returned item is received and inspected, we will notify you of the approval or rejection of your return.</li>
+                <li>If refund approved it will be credited in account within 7days.</li>
+                {/* <li>The customer is responsible for return shipping costs unless the return is due to a defect or error on our part.</li>
+                <li>Once the returned item is received and inspected, we will notify you of the approval or rejection of your return.</li> */}
             </ul><br/>
 
             <h3>4. Non-Returnable Items</h3>
