@@ -23,7 +23,7 @@ const Orders = () => {
             item['payment'] = order.payment;
             item['paymentMethod'] = order.paymentMethod;
             item['date'] = order.date;
-            item['shippingFees'] = order.shippingFees || 0; // Assuming shippingFees is part of the order object
+            // item['shippingFees'] = order.shippingFees || 0; // Assuming shippingFees is part of the order object
             item['returnStatus'] = order.returnStatus || ''; // Assuming returnStatus is part of the order object
             allOrdersItem.push(item);
           });
@@ -42,7 +42,7 @@ const Orders = () => {
   // Function to calculate total price (price * quantity + shipping fees)
   const calculateTotalPrice = (item) => {
     // Ensure the shipping fees are added properly to the total
-    const totalPrice = item.price * item.quantity + (item.shippingFees || 50);
+    const totalPrice = item.price * item.quantity;
     return totalPrice;
   };
 
@@ -82,7 +82,7 @@ const Orders = () => {
                 <div className="flex items-center gap-3 mt-1 text-base text-gray-700">
                   <p>
                     {currency}
-                    {item.price * item.quantity} + {item.shippingFees || 50}
+                    {item.price * item.quantity}
                   </p>
                   <p>Quantity: {item.quantity}</p>
                 </div>
