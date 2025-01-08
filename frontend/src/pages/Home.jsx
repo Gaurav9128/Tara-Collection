@@ -6,16 +6,18 @@ import OurPolicy from '../components/OurPolicy'
 import NewsletterBox from '../components/NewsletterBox'
 import ShopCategories from '../components/ShopCategories'
 import ShopVideo from '../components/ShopVideo'
+import Testimonials from '../components/Testimonials'
 
 const Home = () => {
   return (
     <div>
       <Hero />
       <LatestCollection/>
-      <BestSeller/>
+      <BestSeller />
       <ShopCategories />
       <ShopVideo />
       <OurPolicy/>
+      <Testimonials />
       {/* <NewsletterBox/> */}
     </div>
   )

@@ -4,11 +4,12 @@ import "./ShopVideo.css";
 const ShopVideo = () => {
 
     const categories = [
-        { title: "BRACELETS", video: "/assets/BRACELETS.mp4", price: "₹ 50" },
-        { title: "NECKLACES", video: "/assets/NECKLACES.mp4", price: "₹ 120" },
-        { title: "RINGS", video: "/assets/RINGS.mp4", price: "₹ 30" },
-        { title: "EARRINGS", video: "/assets/EARRINGS.mp4", price: "₹ 40" },
-        { title: "", video: "/assets/Jewellery.mp4", price: "₹ 40" },
+        { title: "", video: "/assets/Mix.mp4", price: "" },
+        { title: "BRACELETS", video: "/assets/BRACELETS.mp4", price: "" },
+        { title: "NECKLACES", video: "/assets/NECKLACES.mp4", price: "" },
+        { title: "RINGS", video: "/assets/RINGS.mp4", price: "" },
+        { title: "EARRINGS", video: "/assets/EARRINGS.mp4", price: "" },
+        { title: "", video: "/assets/Jewellery.mp4", price: "" },
     ];
 
     return (

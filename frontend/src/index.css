@@ -25,7 +25,7 @@ a.active hr{
   @media (max-width:640px) {
     a.active{
         background-color: black;
-        color: white;
+        color: #FFFDD0;
     }
   }
 
@@ -34,7 +34,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Horizontal scrolling prevent karne ke liye */
-  background-color:rgb(255, 255, 255);
+  background-color:#FFFDD0;
 }
 
 /* Parent container and slider adjustments */
@@ -61,13 +61,13 @@ body {
 /* Default styles (light mode) */
 /* Default styles (light mode) */
 body {
-  background-color: white;
+  background-color: #FFFDD0;
   color: black;
 }
 
 /* Dark mode styles */
 html.dark body {
   background-color: #000000; /* Dark background */
-  color: white; /* Light text */
+  color: #FFFDD0; /* Light text */
 }
 

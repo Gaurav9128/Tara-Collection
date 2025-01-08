@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import for navigation
 import "./ShopCategories.css";
+import Title from './Title';
 
 const ShopCategories = () => {
     const navigate = useNavigate(); // Initialize navigate hook
@@ -19,7 +20,7 @@ const ShopCategories = () => {
 
     return (
         <div className="shop-container">
-            <h2 className="shop-title">Shop What You Love</h2>
+             <Title text1={'SHOP WHAT'} text2={'YOU LOVE'}className="text-6xl" />
             <div className="categories-grid">
                 {categories.map((category, index) => (
                     <div
