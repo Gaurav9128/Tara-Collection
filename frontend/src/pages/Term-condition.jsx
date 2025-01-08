@@ -58,7 +58,7 @@ This document is an electronic record in terms of Information Technology Act, 20
 
 This document is published in accordance with the provisions of Rule 3 (1) of the Information Technology (Intermediaries guidelines) Rules, 2011 that require publishing the rules and regulations, privacy policy and Terms of Use for access or usage of domain name https://taracollection.in/ ('Website'), including the related mobile site and mobile application (hereinafter referred to as 'Platform').
 
-The Platform is owned by TARA COLLECTION, a company incorporated under the Companies Act, 1956 with its registered office at GROUND FLOOR, DUKAN NO 2, NAGAR NIGAM MARKET, SECTOR 4, Heena Beauty Salon,   Jaipur Jawahar Nagar ,Jaipur ,India (hereinafter referred to as ?Platform Owner?, 'we', 'us', 'our')..
+The Platform is owned by TARA COLLECTION, a company incorporated under the Companies Act, 1956 with its registered office at  (hereinafter referred to as ?Platform Owner?, 'we', 'us', 'our')..
 
 Your use of the Platform and services and tools are governed by the following terms and conditions (?Terms of Use?) as applicable to the Platform including the applicable policies which are incorporated herein by way of reference. If You transact on the Platform, You shall be subject to the policies that are applicable to the Platform for such transaction. By mere use of the Platform, You shall be contracting with the Platform Owner and these terms and conditions including the policies constitute Your binding obligations, with Platform Owner. These Terms of Use relate to your use of our website, goods (as applicable) or services (as applicable) (collectively, 'Services'). Any terms and conditions proposed by You which are in addition to or which conflict with these Terms of Use are expressly rejected by the Platform Owner and shall be of no force or effect. These Terms of Use can be modified at any time without assigning any reason. It is your responsibility to periodically review these Terms of Use to stay informed of updates..
 
@@ -92,11 +92,17 @@ Notwithstanding anything contained in these Terms of Use, the parties shall not 
 
 These Terms and any dispute or claim relating to it, or its enforceability, shall be governed by and construed in accordance with the laws of India..
 
-All disputes arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts in Jaipur and Rajasthan.
-
 All concerns or communications relating to these Terms must be communicated to us using the contact information provided on this website
 </p>
-        </div>
+<h3>3. Return Policy</h3>
+            <ul>
+                <li>Items can be returned within 3 days of delivery if they are unused, unworn, and in their original packaging with tags intact.</li>
+                <li>If refund approved money it will be credited in account within 7days.</li>
+                {/* <li>The customer is responsible for return shipping costs unless the return is due to a defect or error on our part.</li>
+                <li>Once the returned item is received and inspected, we will notify you of the approval or rejection of your return.</li> */}
+            </ul><br/>
+
+ </div>
     );
 };
 
