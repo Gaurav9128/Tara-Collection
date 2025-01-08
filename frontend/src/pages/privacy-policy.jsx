@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
             <ul>
                 <li><strong>Email:</strong> [taracollection766@gmail.com]</li>
                 <li><strong>Phone:</strong> [+91-8824454873]</li>
-                <li><strong>Address:</strong> [Malviya Nagar Jaipur (302017)]</li>
+                {/* <li><strong>Address:</strong> [Malviya Nagar Jaipur (302017)]</li> */}
             </ul> <br/>
 
             <p>Thank you for trusting Tara Collection. Your privacy is important to us.</p>

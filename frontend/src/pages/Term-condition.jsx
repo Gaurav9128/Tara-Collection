@@ -55,7 +55,7 @@ const TermsAndConditions = () => {
             <ul>
                 <li><strong>Email:</strong> [taracollection766@gmail.com]</li>
                 <li><strong>Phone:</strong> [+91-8824454873]</li>
-                <li><strong>Address:</strong> [Malviya Nagar Jaipur(302017)]</li>
+                {/* <li><strong>Address:</strong> [Malviya Nagar Jaipur(302017)]</li> */}
             </ul><br/>
 
             <h2>Refund, Cancellation & Return Policies for Tara Collection</h2><br/>
@@ -100,7 +100,7 @@ const TermsAndConditions = () => {
             <ul>
                 <li><strong>Email:</strong> [taracollection766@gmail.com]</li>
                 <li><strong>Phone:</strong> [+91-8824454873]</li>
-                <li><strong>Address:</strong> [Malviya Nagar Jaipur(302017)]</li>
+                {/* <li><strong>Address:</strong> [Malviya Nagar Jaipur(302017)]</li> */}
             </ul><br/>
 
             <p>We value your trust and strive to make your shopping experience with Tara Collection enjoyable and hassle-free.</p><br/>

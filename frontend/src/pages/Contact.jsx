@@ -15,7 +15,7 @@ const Contact = () => {
     <img src="/assets/ADS.png" style={{ width: '280px', height: 'auto' }} alt='' />
       <div className='flex flex-col justify-center items-start gap-6'>
         <p className='font-semibold text-xl text-gray-600'> Oure Store</p>
-        <p className='text-gray-500'>Jaipur <br/> Rajasthan.</p>
+        {/* <p className='text-gray-500'>Jaipur <br/> Rajasthan.</p> */}
         <p className='text-gray-500'> Tel : (+91) 8824454873 <br /> Email: taracollection766@gmail.com</p>
         <p className='font-semibold text-xl text-gray-600'>Careers at Tara Collection</p>
         <p className='text-gray-500'>Learn more about our teams.</p>
