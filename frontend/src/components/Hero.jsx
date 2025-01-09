@@ -11,15 +11,15 @@ import 'slick-carousel/slick/slick-theme.css';
 import T6 from '../assets/C6.png';
 
 const Hero = () => {
-  const carouselImages = [T, T2, T3, T4, T5, T6];
+  const carouselImages = [T6];
 
   const settings = {
     dots: false, // Disable dots
-    infinite: true, // Loop the slides
+    infinite: false, // Loop the slides
     speed: 500, // Transition speed
     slidesToShow: 1, // Show 1 slide at a time
     slidesToScroll: 1, // Scroll 1 slide at a time
-    autoplay: true, // Enable autoplay
+    autoplay: false, // Enable autoplay
     autoplaySpeed: 3000, // Duration for each slide
     arrows: false, // Hide navigation arrows
     pauseOnHover: false, // Prevent pausing on hover
