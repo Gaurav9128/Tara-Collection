@@ -97,7 +97,7 @@ const PlaceOrder = () => {
 
                 case 'stripe':
                     console.log("orderData ",orderData)
-                    const responseStripe = await axios.post('http://localhost:5000/api/payment/create-order',orderData,{headers:{token}})
+                    const responseStripe = await axios.post(backendUrl +'/api/payment/create-order',orderData,{headers:{token}})
                     console.log("responseStripe ",responseStripe)
                     if (responseStripe.data.msg) {
                         const {url} = responseStripe.data
