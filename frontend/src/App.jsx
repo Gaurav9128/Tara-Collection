@@ -18,6 +18,7 @@ import Verify from './pages/Verify';
 import './index.css';  // Make sure this is imported
 import PrivacyPolicy from './pages/privacy-policy';
 import TermsAndConditions from './pages/Term-condition';
+import ReturnForm from './components/ReturnForm';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/collection" element={<Collection />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/returnForm" element={<ReturnForm />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />

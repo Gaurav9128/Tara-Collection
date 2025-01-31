@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 const PlaceOrder = () => {
 
     const [method, setMethod] = useState('cod');
-    const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount,products } = useContext(ShopContext);
+    const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount,delivery_fee,products } = useContext(ShopContext);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -96,10 +96,12 @@ const PlaceOrder = () => {
                     break;
 
                 case 'stripe':
-                    const responseStripe = await axios.post(backendUrl + '/api/order/phonepe',orderData,{headers:{token}})
-                    if (responseStripe.data.success) {
-                        const {session_url} = responseStripe.data
-                        window.location.replace(session_url)
+                    console.log("orderData ",orderData)
+                    const responseStripe = await axios.post('http://localhost:5000/api/payment/create-order',orderData,{headers:{token}})
+                    console.log("responseStripe ",responseStripe)
+                    if (responseStripe.data.msg) {
+                        const {url} = responseStripe.data
+                        window.location.replace(url)
                     } else {
                         toast.error(responseStripe.data.message)
                     }

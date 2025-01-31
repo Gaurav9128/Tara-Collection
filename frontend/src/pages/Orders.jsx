@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Title from '../components/Title';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Orders = () => {
   const { backendUrl, token, currency } = useContext(ShopContext);
+  const navigate = useNavigate();
 
   const [orderData, setOrderData] = useState([]);
 
@@ -15,6 +17,7 @@ const Orders = () => {
       }
 
       const response = await axios.post(backendUrl + '/api/order/userorders', {}, { headers: { token } });
+      // console.log("response ",response)
       if (response.data.success) {
         let allOrdersItem = [];
         response.data.orders.map((order) => {
@@ -23,11 +26,13 @@ const Orders = () => {
             item['payment'] = order.payment;
             item['paymentMethod'] = order.paymentMethod;
             item['date'] = order.date;
+            item['orderId'] = order._id;
             // item['shippingFees'] = order.shippingFees || 0; // Assuming shippingFees is part of the order object
             item['returnStatus'] = order.returnStatus || ''; // Assuming returnStatus is part of the order object
             allOrdersItem.push(item);
           });
         });
+        console.log("allOrdersItem ",allOrdersItem)
         setOrderData(allOrdersItem.reverse());
       }
     } catch (error) {
@@ -48,19 +53,21 @@ const Orders = () => {
 
   // Function to handle return request
   const handleReturnRequest = async (orderId, itemId) => {
-    try {
-      const response = await axios.post(
-        backendUrl + '/api/order/returnRequest',
-        { orderId, itemId },
-        { headers: { token } }
-      );
-      if (response.data.success) {
-        // Update order data to show the return request status
-        loadOrderData();
-      }
-    } catch (error) {
-      console.error('Error while submitting return request:', error);
-    }
+    navigate('/returnForm', { state: { orderId, itemId } });
+    // console.log("orderId and item id ",orderId,itemId)
+    // try {
+    //   const response = await axios.post(
+    //     backendUrl + '/api/order/returnRequest',
+    //     { orderId, itemId },
+    //     { headers: { token } }
+    //   );
+    //   if (response.data.success) {
+    //     // Update order data to show the return request status
+    //     loadOrderData();
+    //   }
+    // } catch (error) {
+    //   console.error('Error while submitting return request:', error);
+    // }
   };
 
   return (
