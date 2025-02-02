@@ -19,6 +19,8 @@ import './index.css';  // Make sure this is imported
 import PrivacyPolicy from './pages/privacy-policy';
 import TermsAndConditions from './pages/Term-condition';
 import ReturnForm from './components/ReturnForm';
+import Success from './components/Sucess';
+import Failure from './components/Failure';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -71,6 +73,8 @@ const App = () => {
         <Route path="/verify" element={<Verify />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path='/Term-condition' element={<TermsAndConditions />} />
+        <Route exact path='/success' element={<Success />} />
+          <Route exact path='/failure' element={<Failure />} />
       </Routes>
 
       <Footer />
