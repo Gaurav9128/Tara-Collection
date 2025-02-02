@@ -2,13 +2,12 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
-import { BiNavigation } from 'react-icons/bi';
 
 const ReturnForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { orderId, itemId } = location.state || {};
-  const { backendUrl, token, currency } = useContext(ShopContext);
+  const { backendUrl, token } = useContext(ShopContext);
 
   const [formData, setFormData] = useState({
     orderId: '',
@@ -16,55 +15,69 @@ const ReturnForm = () => {
     productId: '',
     reason: '',
     choice: 'refund',
+    name: '',
+    mobileNumber: '',
+    address: '',
   });
 
   useEffect(() => {
-    // Retrieve user ID from localStorage
-    const userData = JSON.parse(localStorage.getItem('user')); // Ensure parsing JSON
-  console.log("userData ",userData._id)
+    const userData = JSON.parse(localStorage.getItem('user'));
     const userId = userData ? userData._id : '';
-
-    // Set orderId, productId, and userId from context/state
     if (orderId && itemId) {
       setFormData((prev) => ({
         ...prev,
         orderId,
         productId: itemId,
         userId,
+        name: userData?.name || '',
+        mobileNumber: userData?.mobileNumber || '',
+        address: userData?.address || '',
       }));
     }
   }, [orderId, itemId]);
 
   const [loading, setLoading] = useState(false);
 
+  const validateMobileNumber = (number) => {
+    const phoneRegex = /^[0-9]{10}$/;
+    return phoneRegex.test(number);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.reason) {
-      alert('Please provide a reason for the return.');
+    if (!formData.reason || !formData.name || !formData.mobileNumber || !formData.address) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    // Mobile number validation
+    if (!validateMobileNumber(formData.mobileNumber)) {
+      alert('Please enter a valid mobile number.');
       return;
     }
 
     setLoading(true);
-
     try {
-      console.log('Submitting Return Request:', formData);
       const response = await axios.post(
         `${backendUrl}/api/return-order`,
-        {
-          orderId: formData.orderId,
-          productId: formData.productId,
-          userId: formData.userId,
-          reason: formData.reason,
-          choice: formData.choice,
-        },
+        formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log("response ",response)
       if (response.data.success) {
         alert('Return request submitted successfully!');
-        console.log('Return Request Response:', response.data);
-        navigate('/orders')
+        // Clear form after submission
+        setFormData({
+          orderId: '',
+          userId: '',
+          productId: '',
+          reason: '',
+          choice: 'refund',
+          name: '',
+          mobileNumber: '',
+          address: '',
+        });
+        navigate('/orders');
       }
     } catch (err) {
       console.error('Error:', err.response?.data || err.message);
@@ -78,12 +91,42 @@ const ReturnForm = () => {
     <div className="return-form-container" style={styles.container}>
       <h2 style={styles.title}>Return Request</h2>
       <form onSubmit={handleSubmit} style={styles.form}>
+        <label style={styles.label}>Name:</label>
+        <input
+          type="text"
+          placeholder="Enter your name"
+          value={formData.name}
+          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          style={styles.input}
+          required
+        />
+        
+        <label style={styles.label}>Mobile Number:</label>
+        <input
+          type="text"
+          placeholder="Enter your mobile number"
+          value={formData.mobileNumber}
+          onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
+          style={styles.input}
+          required
+        />
+
+        <label style={styles.label}>Address:</label>
+        <textarea
+          placeholder="Enter your address"
+          value={formData.address}
+          onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+          style={styles.textarea}
+          required
+        ></textarea>
+
         <label style={styles.label}>Reason for return:</label>
         <textarea
           placeholder="Explain the reason for return"
           value={formData.reason}
           onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
           style={styles.textarea}
+          required
         ></textarea>
 
         <label style={styles.label}>Request Type:</label>
@@ -125,6 +168,13 @@ const styles = {
     fontSize: '14px',
     fontWeight: 'bold',
     marginTop: '10px',
+  },
+  input: {
+    width: '100%',
+    padding: '10px',
+    borderRadius: '5px',
+    border: '1px solid #ccc',
+    marginTop: '5px',
   },
   textarea: {
     width: '100%',
