@@ -3,10 +3,10 @@ import returnOrderModel from "../models/returnOrderModel.js";
 // Create a return order
 const createReturnOrder = async (req, res) => {
     try {
-        const { choice, orderId, productId, reason, userId } = req.body;
+        const { choice, orderId, productId, reason, userId, customerName, mobileNumber, address } = req.body;
 
         // Validate required fields
-        if (!choice || !orderId || !productId || !reason || !userId) {
+        if (!choice || !orderId || !productId || !reason || !userId || !customerName || !mobileNumber || !address) {
             return res.json({ success: false, message: "All fields are required" });
         }
 
@@ -17,6 +17,9 @@ const createReturnOrder = async (req, res) => {
             productId,
             reason,
             userId,
+            customerName,
+            mobileNumber,
+            address, // Now storing full address object
             status: "Pending", // Default status
         });
 
@@ -35,7 +38,8 @@ const getUserReturnOrders = async (req, res) => {
     try {
         const { userId } = req.params;
 
-        const returnOrders = await returnOrderModel.find({ userId }).populate("productId", "name price");
+        const returnOrders = await returnOrderModel.find({ userId })
+            .populate("productId", "name price");
 
         res.json({ success: true, data: returnOrders });
     } catch (error) {
@@ -47,7 +51,8 @@ const getUserReturnOrders = async (req, res) => {
 // Fetch all return orders (Admin)
 const getAllReturnOrders = async (req, res) => {
     try {
-        const returnOrders = await returnOrderModel.find().populate("productId", "name price");
+        const returnOrders = await returnOrderModel.find()
+            .populate("productId", "name price");
 
         res.json({ success: true, data: returnOrders });
     } catch (error) {

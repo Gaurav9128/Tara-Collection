@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 // global variables
 const currency = 'inr'
-const deliveryCharge = 50
+//const deliveryCharge
 
 // gateway initialize
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
@@ -54,6 +54,8 @@ const placeOrder = async (req, res) => {
 
 
 const placeOrderphonepe = async (req, res) => {
+
+
     const MERCHANT_BASE_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
     const redirectUrlone = "https://abhiramclasses.in/userDetails/25";
     const successUrl = "http://localhost:5173/payment-success";
@@ -128,6 +130,8 @@ const placeOrderphonepe = async (req, res) => {
 
 
 // Placing orders using Stripe Method
+
+
 const placeOrderStripe = async (req, res) => {
     try {
 

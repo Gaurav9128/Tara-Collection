@@ -2,15 +2,15 @@ import axios from 'axios';
 import crypto from 'crypto';
 import { v4 as uuidv4 } from 'uuid';
  
-const MERCHANT_KEY = "88186875-58c6-4313-a000-1e640b3db251";
-const MERCHANT_ID = "PGTESTPAYUAT85";
+const MERCHANT_KEY = "b4650abc-8e26-4130-ae97-42af3ae2b2ae";
+const MERCHANT_ID = "M22KT8OP23RUM";
  
-const MERCHANT_BASE_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
-const MERCHANT_STATUS_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status";
+const MERCHANT_BASE_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+const MERCHANT_STATUS_URL = "https://api.phonepe.com/apis/hermes/pg/v1/status/";
  
-const redirectUrl = "http://localhost:4000/status";
-const successUrl = "http://localhost:5173/payment-success";
-const failureUrl = "http://localhost:5173/payment-failure";
+const redirectUrl = "http://localhost:5000/status";
+const successUrl = "http://localhost:5173/success";
+const failureUrl = "http://localhost:5173/failure";
  
 // Create Order and Initiate Payment
 export const createOrder = async (req, res) => {
@@ -40,6 +40,7 @@ export const createOrder = async (req, res) => {
         const string = payload + '/pg/v1/pay' + MERCHANT_KEY;
         const sha256 = crypto.createHash('sha256').update(string).digest('hex');
         const checksum = sha256 + '###' + keyIndex;
+     
  
         const options = {
             method: 'POST',
@@ -84,13 +85,14 @@ export const checkPaymentStatus = async (req, res) => {
             }
         };
  
-        const response = await axios.request(options);
+        // CHECK PAYMENT TATUS
+    const response = await axios.request(options);
         
-        if (response.data.success === true) {
-            return res.redirect(successUrl);
-        } else {
-            return res.redirect(failureUrl);
-        }
+    if (response.data.success === true) {
+        return res.redirect(successUrl);
+    } else {
+        return res.redirect(failureUrl);
+    }
     } catch (error) {
         console.error("Error checking payment status:", error);
         res.status(500).json({ error: 'Failed to check payment status' });
