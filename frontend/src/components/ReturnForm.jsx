@@ -13,70 +13,56 @@ const ReturnForm = () => {
     orderId: '',
     userId: '',
     productId: '',
+    name: '',
+    mobile: '',
+    address: '',
     reason: '',
     choice: 'refund',
-    name: '',
-    mobileNumber: '',
-    address: '',
   });
 
   useEffect(() => {
+    // Retrieve user details from localStorage
     const userData = JSON.parse(localStorage.getItem('user'));
     const userId = userData ? userData._id : '';
+    const name = userData ? userData.name : '';
+    const mobile = userData ? userData.mobile : '';
+    const address = userData ? userData.address : '';
+
+    // Set orderId, productId, and userId from context/state
     if (orderId && itemId) {
       setFormData((prev) => ({
         ...prev,
         orderId,
         productId: itemId,
         userId,
-        name: userData?.name || '',
-        mobileNumber: userData?.mobileNumber || '',
-        address: userData?.address || '',
+        name,
+        mobile,
+        address,
       }));
     }
   }, [orderId, itemId]);
 
   const [loading, setLoading] = useState(false);
 
-  const validateMobileNumber = (number) => {
-    const phoneRegex = /^[0-9]{10}$/;
-    return phoneRegex.test(number);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.reason || !formData.name || !formData.mobileNumber || !formData.address) {
-      alert('Please fill all required fields.');
-      return;
-    }
-
-    // Mobile number validation
-    if (!validateMobileNumber(formData.mobileNumber)) {
-      alert('Please enter a valid mobile number.');
+    if (!formData.reason) {
+      alert('Please provide a reason for the return.');
       return;
     }
 
     setLoading(true);
+
     try {
       const response = await axios.post(
         `${backendUrl}/api/return-order`,
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
       if (response.data.success) {
         alert('Return request submitted successfully!');
-        // Clear form after submission
-        setFormData({
-          orderId: '',
-          userId: '',
-          productId: '',
-          reason: '',
-          choice: 'refund',
-          name: '',
-          mobileNumber: '',
-          address: '',
-        });
         navigate('/orders');
       }
     } catch (err) {
@@ -94,26 +80,23 @@ const ReturnForm = () => {
         <label style={styles.label}>Name:</label>
         <input
           type="text"
-          placeholder="Enter your name"
           value={formData.name}
           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           style={styles.input}
           required
         />
-        
+
         <label style={styles.label}>Mobile Number:</label>
         <input
           type="text"
-          placeholder="Enter your mobile number"
-          value={formData.mobileNumber}
-          onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
+          value={formData.mobile}
+          onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
           style={styles.input}
           required
         />
 
         <label style={styles.label}>Address:</label>
         <textarea
-          placeholder="Enter your address"
           value={formData.address}
           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
           style={styles.textarea}
@@ -174,7 +157,6 @@ const styles = {
     padding: '10px',
     borderRadius: '5px',
     border: '1px solid #ccc',
-    marginTop: '5px',
   },
   textarea: {
     width: '100%',
