@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.navbar {
+    background-color: #004950; /* Dark teal color */
+    padding: 15px;
+}
+
 a.active hr{
     display: block;
 }
