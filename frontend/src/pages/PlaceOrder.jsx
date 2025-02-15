@@ -109,6 +109,7 @@ const PlaceOrder = () => {
                     console.log("responseStripe ",responseStripe)
                     if (responseStripe.data.msg) {
                         const {url} = responseStripe.data
+                        setCartItems({})
                         window.location.replace(url)
                     } else {
                         toast.error(responseStripe.data.message)
