@@ -16,12 +16,12 @@ const Home = () => {
 
   useEffect(() => {
     if (!token) {
-      // Auto-redirect after 2 minutes if user is not logged in
+      // Auto-redirect after 2 seconds if user is not logged in
       const timer = setTimeout(() => {
         navigate('/login');
-      }, 120000); // 120000ms = 2 minutes
+      }, 2000); // 2000ms = 2 seconds
 
-      return () => clearTimeout(timer); // Cleanup function to clear timeout when component unmounts
+      return () => clearTimeout(timer); // Cleanup function
     }
   }, [token, navigate]);
 
